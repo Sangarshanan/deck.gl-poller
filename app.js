@@ -73,7 +73,17 @@ export class App extends Component {
     return (
       <DeckGL
         layers={this._renderLayers()}
-        getTooltip={({object}) => object && `${object.hex} count: ${object.count}`}
+        getTooltip={({object}) => object && {
+          html: `<h2>Veggie for Hoomans</h2>
+          <div>The goodest Veggie: ${object.top_product} </div>
+          <br>
+          <img src=${object.img} width="100" height="100">
+          <br>
+          <div>Total veggies: ${object.total_quantity}</div>`,
+          style: {
+            fontSize: '0.8em'
+          }
+        } }
         initialViewState={INITIAL_VIEW_STATE}
         controller={true}
       >
